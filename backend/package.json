@@ -1,0 +1,13 @@
+{
+  "name": "hitayu-backend",
+  "version": "3.0.0",
+  "description": "Zero-dependency Node.js REST API for Hitayu E-Commerce, Shop Profile, User Accounts, Payments, Order Tracking, Multi-Author Blog CMS & AI Agent Connector",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node ../tests/pentest.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
