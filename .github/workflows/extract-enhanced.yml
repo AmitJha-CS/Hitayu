@@ -1,0 +1,30 @@
+name: Extract Enhanced Zip
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Extract hitayu-ready-to-push.zip
+        run: unzip -o hitayu-ready-to-push.zip -d .
+
+      - name: Commit and push extracted files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Extract contents of hitayu-ready-to-push.zip"
+            git push origin HEAD:main
+          else
+            echo "No changes to commit"
+          fi
