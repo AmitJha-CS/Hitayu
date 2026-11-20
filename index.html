@@ -1,17 +1,1695 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Hitayu: organic herbal products, daily habits and yoga for a balanced life." />
-    <title>Hitayu | Herbal living, yoga and daily wellness</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%232e7d32'/%3E%3Ctext x='50' y='66' font-size='55' text-anchor='middle' fill='white' font-family='serif'%3EH%3C/text%3E%3C/svg%3E" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Young+Serif&display=swap" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hitayu — Organic Lifestyle, Herbal Habits &amp; Mindful Wellness</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231E3A2F'/%3E%3Cpath d='M32 14c-8 10-12 18-12 25a12 12 0 0024 0c0-7-4-15-12-25z' fill='%23D4962A'/%3E%3Cpath d='M32 22v26' stroke='%23FAF7F2' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Oriya:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              DEFAULT: '#1E3A2F',
+              light: '#2C5243',
+              dark: '#142820',
+            },
+            terracotta: {
+              DEFAULT: '#C4633A',
+              light: '#D97E56',
+              soft: '#F7E7DF',
+            },
+            turmeric: {
+              DEFAULT: '#D4962A',
+              soft: '#FBF3E0',
+            },
+            oat: {
+              DEFAULT: '#FAF7F2',
+              warm: '#F2ECE1',
+              border: '#E5DDD0',
+            },
+            sage: {
+              DEFAULT: '#E8EFE9',
+              muted: '#5F7469',
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #FAF7F2;
+      color: #1A241F;
+      font-family: 'Inter', 'Noto Sans Devanagari', 'Noto Sans Oriya', system-ui, sans-serif;
+    }
+    .font-display {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+    .breath-orb {
+      transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 1s ease;
+    }
+    .glass-nav {
+      background: rgba(250, 247, 242, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .progress-ring-circle {
+      transition: stroke-dashoffset 0.5s ease;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up {
+      animation: fadeSlideUp 0.45s ease forwards;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-terracotta/20 selection:text-forest">
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Navigation -->
+  <header class="sticky top-0 z-40 glass-nav border-b border-oat-border/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <a href="#top" class="flex items-center gap-2.5 shrink-0">
+        <svg class="w-9 h-9" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <circle cx="32" cy="32" r="30" fill="#1E3A2F"/>
+          <path d="M32 13C23 23 19 31 19 39C19 46.2 24.8 52 32 52C39.2 52 45 46.2 45 39C45 31 41 23 32 13Z" fill="#D4962A" fill-opacity="0.92"/>
+          <path d="M32 22V48M32 34L25 28M32 39L39 33" stroke="#FAF7F2" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <div class="leading-none">
+          <span class="font-display text-2xl font-bold tracking-wide text-forest block">Hitayu</span>
+          <span data-i18n="brand_tag" class="text-[10px] uppercase tracking-[0.22em] text-sage-muted">Organic Living</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-forest/80">
+        <a href="#pillars" data-i18n="nav_pillars" class="hover:text-terracotta transition-colors">Pillars</a>
+        <a href="#breathwork" data-i18n="nav_breathwork" class="hover:text-terracotta transition-colors">Breathwork</a>
+        <a href="#routine" data-i18n="nav_routine" class="hover:text-terracotta transition-colors">Daily Routine</a>
+        <a href="#apothecary" data-i18n="nav_apothecary" class="hover:text-terracotta transition-colors">Apothecary</a>
+        <a href="#ritual-finder" data-i18n="nav_quiz" class="hover:text-terracotta transition-colors">Ritual Quiz</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <label for="lang-select" class="sr-only">Select Language</label>
+        <div class="relative inline-flex items-center">
+          <svg class="w-3.5 h-3.5 text-forest/70 absolute left-2.5 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
+          </svg>
+          <select id="lang-select" aria-label="Translate language" class="pl-7 pr-6 py-1.5 rounded-full bg-oat-warm border border-oat-border text-xs font-semibold text-forest hover:border-forest/40 focus:outline-none focus:border-forest cursor-pointer">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+            <option value="or">ଓଡ଼ିଆ (Odia)</option>
+            <option value="bn">বাংলা (Bengali)</option>
+            <option value="mr">मराठी (Marathi)</option>
+            <option value="ta">தமிழ் (Tamil)</option>
+            <option value="te">తెలుగు (Telugu)</option>
+            <option value="gu">ગુજરાતી (Gujarati)</option>
+          </select>
+        </div>
+
+        <button id="open-bag-btn" type="button" class="relative inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-forest text-oat text-sm font-medium hover:bg-forest-light transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="hidden sm:inline" data-i18n="nav_bag">Bag</span>
+          <span id="bag-count-badge" class="inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full bg-turmeric text-forest-dark text-xs font-bold">0</span>
+        </button>
+
+        <button id="mobile-menu-btn" type="button" aria-label="Toggle Menu" class="md:hidden p-2 rounded-lg border border-oat-border text-forest hover:bg-oat-warm">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-oat-border bg-oat px-4 py-3 space-y-2 text-sm font-medium text-forest">
+      <a href="#pillars" class="mobile-nav-link block py-2 hover:text-terracotta">Pillars of Wellness</a>
+      <a href="#breathwork" class="mobile-nav-link block py-2 hover:text-terracotta">Pranayama Breathwork</a>
+      <a href="#routine" class="mobile-nav-link block py-2 hover:text-terracotta">Daily Dinacharya Routine</a>
+      <a href="#apothecary" class="mobile-nav-link block py-2 hover:text-terracotta">Herbal Apothecary</a>
+      <a href="#ritual-finder" class="mobile-nav-link block py-2 hover:text-terracotta">Personal Ritual Quiz</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-10 pb-16 lg:pt-16 lg:pb-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div class="lg:col-span-6 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage text-forest text-xs font-semibold tracking-wider uppercase">
+              <span class="w-2 h-2 rounded-full bg-terracotta"></span>
+              <span data-i18n="hero_badge">Ayurveda-Inspired Organic Lifestyle</span>
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold text-forest leading-[1.08]">
+              <span data-i18n="hero_title_1">Rooted in Nature.</span><br />
+              <span data-i18n="hero_title_2" class="italic text-terracotta">Crafted for Daily Vitality.</span>
+            </h1>
+
+            <p data-i18n="hero_desc" class="text-base sm:text-lg text-forest/75 leading-relaxed max-w-xl">
+              Hitayu brings together pure botanical formulations, grounded herbal habits, and mindful yoga practices—helping you build calm, resilient energy from sunrise to rest.
+            </p>
+
+            <div class="flex flex-wrap gap-3 pt-1">
+              <a href="#apothecary" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-forest text-oat text-sm font-semibold hover:bg-forest-light transition-all shadow-sm">
+                <span data-i18n="hero_cta_1">Explore Herbal Apothecary</span>
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+              <a href="#breathwork" data-i18n="hero_cta_2" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-oat-warm text-forest border border-oat-border text-sm font-semibold hover:border-forest/40 transition-all">
+                Start Guided Breathwork
+              </a>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4 pt-6 border-t border-oat-border/80">
+              <div>
+                <p class="font-display text-2xl sm:text-3xl font-bold text-forest">100%</p>
+                <p class="text-xs text-sage-muted mt-0.5">Whole Botanicals &amp; Herbs</p>
+              </div>
+              <div>
+                <p class="font-display text-2xl sm:text-3xl font-bold text-forest">Zero</p>
+                <p class="text-xs text-sage-muted mt-0.5">Synthetic Fillers or Dyes</p>
+              </div>
+              <div>
+                <p class="font-display text-2xl sm:text-3xl font-bold text-forest">Daily</p>
+                <p class="text-xs text-sage-muted mt-0.5">Yoga &amp; Herbal Rituals</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 relative">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-oat-border bg-oat-warm">
+              <img
+                src="./images/hero.jpg"
+                alt="Steaming golden herbal tea with fresh tulsi leaves, raw turmeric root, and wooden mortar in warm morning light"
+                class="w-full h-auto object-cover aspect-[16/10]"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-forest-dark/55 via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-oat/95 backdrop-blur-md rounded-2xl p-4 border border-oat-border flex items-center justify-between gap-4">
+                <div>
+                  <p class="text-[11px] uppercase tracking-widest text-terracotta font-semibold">Morning Elixir</p>
+                  <p class="font-display text-lg sm:text-xl font-semibold text-forest">Tulsi, Raw Turmeric &amp; Ginger Ritual</p>
+                </div>
+                <a href="#ritual-finder" class="shrink-0 px-3.5 py-2 rounded-full bg-forest text-oat text-xs font-semibold hover:bg-forest-light transition-colors">
+                  Find Yours
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pillars of Hitayu (Interactive Explorer) -->
+    <section id="pillars" class="py-16 lg:py-24 bg-oat-warm/60 border-y border-oat-border/70">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+          <p data-i18n="pillars_eyebrow" class="text-xs uppercase tracking-[0.22em] text-terracotta font-semibold">The Hitayu Philosophy</p>
+          <h2 data-i18n="pillars_title" class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-forest mt-2">
+            Four Pillars of Balanced Organic Living
+          </h2>
+          <p data-i18n="pillars_desc" class="text-forest/75 mt-3 text-sm sm:text-base">
+            Select a pillar below to explore how Hitayu weaves ancient Ayurvedic wisdom into simple, repeatable habits.
+          </p>
+        </div>
+
+        <div id="pillar-tabs" class="flex flex-wrap gap-2.5 mt-8"></div>
+
+        <div id="pillar-detail" class="mt-8 grid lg:grid-cols-12 gap-8 items-center bg-oat rounded-3xl p-5 sm:p-8 border border-oat-border shadow-sm">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Guided Breathwork Studio -->
+    <section id="breathwork" class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-5 space-y-5">
+            <p data-i18n="breath_eyebrow" class="text-xs uppercase tracking-[0.22em] text-terracotta font-semibold">Pranayama Studio</p>
+            <h2 data-i18n="breath_title" class="font-display text-3xl sm:text-4xl font-semibold text-forest">
+              Pause &amp; Reset with Guided Breathwork
+            </h2>
+            <p data-i18n="breath_desc" class="text-forest/75 text-sm sm:text-base leading-relaxed">
+              Just two minutes of conscious breathing lowers nervous tension and sharpens focus before meals, work, or sleep. Pick a cadence and follow the breathing orb.
+            </p>
+
+            <div id="breath-mode-list" class="space-y-2.5 pt-2"></div>
+
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button id="breath-toggle-btn" type="button" class="px-6 py-3 rounded-full bg-forest text-oat text-sm font-semibold hover:bg-forest-light transition-colors">
+                Start Session
+              </button>
+              <button id="breath-reset-btn" type="button" class="px-5 py-3 rounded-full bg-oat-warm text-forest border border-oat-border text-sm font-semibold hover:border-forest/40 transition-colors">
+                Reset
+              </button>
+              <span class="text-xs text-sage-muted ml-1">Completed cycles: <strong id="breath-cycles" class="text-forest">0</strong></span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="relative rounded-3xl bg-forest text-oat p-8 sm:p-12 flex flex-col items-center justify-center min-h-[370px] overflow-hidden shadow-xl">
+              <!-- Subtle botanical mandala SVG backdrop -->
+              <svg class="absolute inset-0 w-full h-full opacity-[0.07] pointer-events-none" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+                <circle cx="200" cy="200" r="160" stroke="#FAF7F2" stroke-width="1"/>
+                <circle cx="200" cy="200" r="115" stroke="#D4962A" stroke-width="1" stroke-dasharray="6 6"/>
+                <circle cx="200" cy="200" r="70" stroke="#FAF7F2" stroke-width="1"/>
+              </svg>
+
+              <p id="breath-active-name" class="relative z-10 text-xs uppercase tracking-[0.25em] text-turmeric font-semibold mb-8">
+                Anulom Vilom · Balanced
+              </p>
+
+              <div class="relative z-10 w-48 h-48 sm:w-56 sm:h-56 flex items-center justify-center">
+                <div id="breath-ring" class="breath-orb absolute inset-0 rounded-full border-2 border-turmeric/40 bg-turmeric/10"></div>
+                <div id="breath-orb" class="breath-orb w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-turmeric via-terracotta to-forest-light shadow-2xl flex flex-col items-center justify-center text-center px-3">
+                  <span id="breath-phase-label" class="font-display text-2xl sm:text-3xl font-semibold text-oat">Ready</span>
+                  <span id="breath-countdown" class="text-xs uppercase tracking-widest text-oat/85 mt-1">Press Start</span>
+                </div>
+              </div>
+
+              <p id="breath-cue" class="relative z-10 text-sm text-oat/80 text-center max-w-md mt-8">
+                Sit upright with relaxed shoulders. Breathe gently through your nose.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Daily Dinacharya (Routine Builder) -->
+    <section id="routine" class="py-16 lg:py-24 bg-sage/45 border-y border-oat-border/70">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div class="max-w-2xl">
+            <p data-i18n="routine_eyebrow" class="text-xs uppercase tracking-[0.22em] text-terracotta font-semibold">Dinacharya Tracker</p>
+            <h2 data-i18n="routine_title" class="font-display text-3xl sm:text-4xl font-semibold text-forest mt-2">
+              Build Your Daily Herbal &amp; Yoga Rhythm
+            </h2>
+            <p data-i18n="routine_desc" class="text-forest/75 mt-2 text-sm sm:text-base">
+              Check off your daily organic rituals as you complete them, or add your own personal wellness habit.
+            </p>
+          </div>
+
+          <!-- Progress Ring Card -->
+          <div class="flex items-center gap-4 bg-oat px-5 py-3.5 rounded-2xl border border-oat-border shadow-sm self-start lg:self-auto">
+            <div class="relative w-14 h-14 shrink-0">
+              <svg class="w-14 h-14" viewBox="0 0 60 60">
+                <circle cx="30" cy="30" r="24" fill="none" stroke="#E5DDD0" stroke-width="5"/>
+                <circle id="routine-ring" class="progress-ring-circle" cx="30" cy="30" r="24" fill="none" stroke="#1E3A2F" stroke-width="5" stroke-linecap="round" stroke-dasharray="150.8" stroke-dashoffset="150.8"/>
+              </svg>
+              <span id="routine-percent" class="absolute inset-0 flex items-center justify-center text-xs font-bold text-forest">0%</span>
+            </div>
+            <div>
+              <p class="text-xs uppercase tracking-wider text-sage-muted font-semibold">Today's Vitality</p>
+              <p class="text-sm font-semibold text-forest"><span id="routine-done-count">0</span> of <span id="routine-total-count">8</span> rituals done</p>
+              <button id="routine-reset-btn" type="button" class="text-xs text-terracotta hover:underline mt-0.5">Reset today</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-4 mt-8">
+          <div id="routine-filters" class="flex flex-wrap gap-2"></div>
+
+          <form id="add-habit-form" class="flex flex-wrap sm:flex-nowrap items-center gap-2 w-full sm:w-auto">
+            <input id="new-habit-input" type="text" placeholder="Add a personal ritual..." class="flex-1 sm:w-56 px-3.5 py-2 rounded-full bg-oat border border-oat-border text-sm text-forest placeholder:text-sage-muted focus:outline-none focus:border-forest" required />
+            <select id="new-habit-time" class="px-3 py-2 rounded-full bg-oat border border-oat-border text-sm text-forest focus:outline-none focus:border-forest">
+              <option value="Morning">Morning</option>
+              <option value="Midday">Midday</option>
+              <option value="Evening">Evening</option>
+            </select>
+            <button type="submit" class="px-4 py-2 rounded-full bg-forest text-oat text-sm font-semibold hover:bg-forest-light transition-colors">Add</button>
+          </form>
+        </div>
+
+        <div id="routine-list" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6"></div>
+      </div>
+    </section>
+
+    <!-- Curated Organic Apothecary -->
+    <section id="apothecary" class="py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div class="max-w-2xl">
+            <p data-i18n="shop_eyebrow" class="text-xs uppercase tracking-[0.22em] text-terracotta font-semibold">Hitayu Apothecary</p>
+            <h2 data-i18n="shop_title" class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold text-forest mt-2">
+              Small-Batch Herbal Formulations
+            </h2>
+            <p data-i18n="shop_desc" class="text-forest/75 mt-2 text-sm sm:text-base">
+              Clean, potent botanicals harvested ethically and formulated for everyday immunity, calm focus, and gentle digestion.
+            </p>
+          </div>
+
+          <div class="relative w-full md:w-64">
+            <input id="product-search" type="search" placeholder="Search herbs or benefits..." class="w-full pl-9 pr-4 py-2.5 rounded-full bg-oat-warm border border-oat-border text-sm text-forest placeholder:text-sage-muted focus:outline-none focus:border-forest" />
+            <svg class="w-4 h-4 text-sage-muted absolute left-3.5 top-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+        </div>
+
+        <div id="category-filters" class="flex flex-wrap gap-2 mt-6"></div>
+
+        <div id="product-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"></div>
+      </div>
+    </section>
+
+    <!-- Personal Ritual Finder (Interactive Quiz) -->
+    <section id="ritual-finder" class="py-16 lg:py-24 bg-oat-warm/70 border-t border-oat-border/70">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto">
+          <p data-i18n="quiz_eyebrow" class="text-xs uppercase tracking-[0.22em] text-terracotta font-semibold">Personalized Guidance</p>
+          <h2 data-i18n="quiz_title" class="font-display text-3xl sm:text-4xl font-semibold text-forest mt-2">
+            Discover Your Hitayu Daily Ritual
+          </h2>
+          <p data-i18n="quiz_desc" class="text-forest/75 mt-2 text-sm sm:text-base">
+            Answer 3 quick questions to get a tailored herbal blend, breathwork cadence, and morning habit.
+          </p>
+        </div>
+
+        <div id="quiz-card" class="mt-8 bg-oat rounded-3xl p-6 sm:p-9 border border-oat-border shadow-sm">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Newsletter & Footer -->
+    <footer class="bg-forest text-oat pt-16 pb-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-10 pb-12 border-b border-oat/15">
+          <div class="lg:col-span-5 space-y-4">
+            <div class="flex items-center gap-2.5">
+              <svg class="w-8 h-8" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <circle cx="32" cy="32" r="30" fill="#FAF7F2" fill-opacity="0.12"/>
+                <path d="M32 13C23 23 19 31 19 39C19 46.2 24.8 52 32 52C39.2 52 45 46.2 45 39C45 31 41 23 32 13Z" fill="#D4962A"/>
+                <path d="M32 22V48" stroke="#1E3A2F" stroke-width="2.2" stroke-linecap="round"/>
+              </svg>
+              <span class="font-display text-2xl font-bold tracking-wide">Hitayu</span>
+            </div>
+            <p class="text-sm text-oat/75 leading-relaxed max-w-sm">
+              Organic lifestyle and holistic wellness—uniting herbal wisdom, daily yoga habits, and pure botanical care for modern life.
+            </p>
+          </div>
+
+          <div class="lg:col-span-3 space-y-2.5 text-sm">
+            <p class="text-xs uppercase tracking-widest text-turmeric font-semibold mb-3">Explore</p>
+            <a href="#pillars" class="block text-oat/80 hover:text-oat">Wellness Pillars</a>
+            <a href="#breathwork" class="block text-oat/80 hover:text-oat">Pranayama Studio</a>
+            <a href="#routine" class="block text-oat/80 hover:text-oat">Daily Routine Tracker</a>
+            <a href="#apothecary" class="block text-oat/80 hover:text-oat">Herbal Apothecary</a>
+          </div>
+
+          <div class="lg:col-span-4 space-y-3">
+            <p class="text-xs uppercase tracking-widest text-turmeric font-semibold">Join the Hitayu Journal</p>
+            <p class="text-sm text-oat/75">Seasonal herbal recipes, pranayama guides, and early access to new small-batch blends.</p>
+            <form id="newsletter-form" class="flex gap-2 pt-1">
+              <input id="newsletter-email" type="email" required placeholder="you@example.com" class="flex-1 px-4 py-2.5 rounded-full bg-oat/10 border border-oat/25 text-sm text-oat placeholder:text-oat/50 focus:outline-none focus:border-turmeric" />
+              <button type="submit" class="px-5 py-2.5 rounded-full bg-turmeric text-forest-dark text-sm font-semibold hover:bg-turmeric/90 transition-colors shrink-0">
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-oat/60">
+          <p>&copy; 2026 Hitayu Organic Wellness. Crafted with mindfulness.</p>
+          <p>Pure Botanicals · Daily Habits · Balanced Living</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Product Quick-View Modal -->
+  <div id="product-modal" class="hidden fixed inset-0 z-50 bg-forest-dark/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-oat rounded-3xl max-w-lg w-full overflow-hidden border border-oat-border shadow-2xl animate-fade-up">
+      <div id="product-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Slide-Over Bag Drawer -->
+  <div id="bag-drawer-overlay" class="hidden fixed inset-0 z-50 bg-forest-dark/50 backdrop-blur-sm flex justify-end">
+    <div class="bg-oat w-full max-w-md h-full flex flex-col shadow-2xl border-l border-oat-border">
+      <div class="px-6 py-5 border-b border-oat-border flex items-center justify-between">
+        <div>
+          <h3 data-i18n="bag_title" class="font-display text-2xl font-semibold text-forest">Your Wellness Bag</h3>
+          <p id="bag-shipping-msg" class="text-xs text-sage-muted mt-0.5">Free organic delivery on orders above ₹999</p>
+        </div>
+        <button id="close-bag-btn" type="button" aria-label="Close Bag" class="p-2 rounded-full hover:bg-oat-warm text-forest">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+
+      <div id="bag-items-list" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+
+      <div class="p-6 border-t border-oat-border bg-oat-warm/60 space-y-4">
+        <div class="flex items-center justify-between text-sm">
+          <span class="text-sage-muted">Subtotal</span>
+          <span id="bag-subtotal" class="font-display text-2xl font-bold text-forest">₹0</span>
+        </div>
+        <button id="checkout-btn" type="button" data-i18n="bag_checkout" class="w-full py-3.5 rounded-full bg-forest text-oat text-sm font-semibold hover:bg-forest-light transition-colors disabled:opacity-40">
+          Place Order Inquiry
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const IMAGES = {
+      hero: "./images/hero.jpg",
+      apothecary: "./images/apothecary.jpg",
+      yoga: "./images/yoga.jpg",
+      ritual: "./images/ritual.jpg"
+    };
+
+    const PILLARS = [
+      {
+        id: 'herbal',
+        title: 'Herbal Habits',
+        subtitle: 'Warm infusions & adaptogenic nutrition',
+        image: IMAGES.ritual,
+        description: 'Replace jittery stimulants with warm, digestive infusions of tulsi, ginger, cardamom, and saffron. Small botanical rituals practiced consistently restore gut harmony and steady energy.',
+        points: [
+          'Start mornings with warm spiced water before caffeine',
+          'Pair meals with digestive herbs like fennel and ginger',
+          'Wind down with floral chamomile and rose tisanes'
+        ],
+        microPractice: 'Steep 4 fresh tulsi leaves and a slice of ginger in warm water for 5 minutes right after waking.'
+      },
+      {
+        id: 'yoga',
+        title: 'Yoga & Pranayama',
+        subtitle: 'Breath-led movement for clarity & strength',
+        image: IMAGES.yoga,
+        description: 'Movement does not need to be exhausting to be transformative. Ten minutes of sun salutations paired with rhythmic pranayama opens posture, deepens breath capacity, and steadies the mind.',
+        points: [
+          'Gentle spinal mobility within 30 minutes of waking',
+          'Nasal breathwork to regulate afternoon stress spikes',
+          'Restorative forward folds before bedtime'
+        ],
+        microPractice: 'Practice 5 slow rounds of Anulom Vilom before opening your laptop or phone.'
+      },
+      {
+        id: 'apothecary',
+        title: 'Organic Apothecary',
+        subtitle: 'Clean, small-batch botanical formulations',
+        image: IMAGES.apothecary,
+        description: 'Every Hitayu blend focuses on whole-plant synergy—free from synthetic fillers, artificial flavors, or harsh preservatives—crafted to support immunity, calm focus, and gut wellness.',
+        points: [
+          'Ethically sourced whole herbs and root extracts',
+          'Amber glass & recyclable packaging to protect potency',
+          'Simple dosage rituals designed for busy schedules'
+        ],
+        microPractice: 'Keep your daily herbal blend visible beside your kettle so nourishment becomes effortless.'
+      },
+      {
+        id: 'mindful',
+        title: 'Mindful Living',
+        subtitle: 'Circadian alignment & unhurried pauses',
+        image: IMAGES.hero,
+        description: 'True wellness lives in the quiet spaces between tasks. Aligning meals, light exposure, and screen-free evenings with natural rhythms restores deep, restorative sleep.',
+        points: [
+          'Seek 10 minutes of natural morning sunlight',
+          'Eat lunch away from screens to aid mindful digestion',
+          'Create a 45-minute digital sunset before sleep'
+        ],
+        microPractice: 'Take three slow, unhurried breaths before your first sip of tea or water today.'
+      }
+    ];
+
+    const BREATH_MODES = [
+      {
+        id: 'anulom',
+        name: 'Anulom Vilom · Balanced',
+        desc: '4s Inhale · 4s Hold · 4s Exhale · 4s Rest — steady focus',
+        phases: [
+          { label: 'Inhale', seconds: 4, scale: 1.24, cue: 'Breathe in smoothly and deeply through your nose.' },
+          { label: 'Hold', seconds: 4, scale: 1.24, cue: 'Hold gently with a soft jaw and relaxed shoulders.' },
+          { label: 'Exhale', seconds: 4, scale: 0.9, cue: 'Release slowly and evenly, letting tension melt.' },
+          { label: 'Rest', seconds: 4, scale: 0.9, cue: 'Pause in stillness before the next breath.' }
+        ]
+      },
+      {
+        id: 'calm478',
+        name: '4-7-8 · Deep Calm',
+        desc: '4s Inhale · 7s Hold · 8s Exhale — unwind before rest',
+        phases: [
+          { label: 'Inhale', seconds: 4, scale: 1.26, cue: 'Inhale quietly through the nose for four counts.' },
+          { label: 'Hold', seconds: 7, scale: 1.26, cue: 'Hold the breath softly, calming the heart rate.' },
+          { label: 'Exhale', seconds: 8, scale: 0.86, cue: 'Exhale slowly and completely for eight long counts.' }
+        ]
+      },
+      {
+        id: 'surya',
+        name: 'Surya · Morning Energy',
+        desc: '4s Inhale · 2s Hold · 6s Exhale — crisp vitality',
+        phases: [
+          { label: 'Inhale', seconds: 4, scale: 1.22, cue: 'Draw fresh morning energy upward through the spine.' },
+          { label: 'Hold', seconds: 2, scale: 1.22, cue: 'Brief, bright pause at the top of the breath.' },
+          { label: 'Exhale', seconds: 6, scale: 0.92, cue: 'Smooth, grounding exhale to clear sluggishness.' }
+        ]
+      }
+    ];
+
+    const DEFAULT_HABITS = [
+      { id: 'h1', title: 'Warm Copper-Vessel Water', time: 'Morning', note: 'Hydrate & awaken digestion', done: true },
+      { id: 'h2', title: '10-Min Surya Namaskar', time: 'Morning', note: '5 mindful rounds at sunrise', done: false },
+      { id: 'h3', title: 'Tulsi-Ginger Herbal Infusion', time: 'Morning', note: 'Warm immunity boost', done: false },
+      { id: 'h4', title: '5-Min Anulom Vilom', time: 'Midday', note: 'Reset focus before work', done: false },
+      { id: 'h5', title: 'Unplugged Mindful Lunch', time: 'Midday', note: 'No screens while eating', done: false },
+      { id: 'h6', title: 'Moringa Vitality Tonic', time: 'Midday', note: 'Steady plant-based energy', done: false },
+      { id: 'h7', title: 'Digital Sunset (45m)', time: 'Evening', note: 'Dim lights & step off screens', done: false },
+      { id: 'h8', title: 'Chamomile-Rose Night Tisane', time: 'Evening', note: 'Gentle transition to sleep', done: false }
+    ];
+
+    const PRODUCTS = [
+      {
+        id: 'p1',
+        name: 'Tulsi & Giloy Immunity Drops',
+        category: 'Immunity',
+        price: 449,
+        size: '50 ml · Amber Dropper',
+        image: IMAGES.apothecary,
+        tagline: 'Concentrated five-tulsi & organic giloy extract for seasonal resilience.',
+        ingredients: 'Rama Tulsi, Krishna Tulsi, Vana Tulsi, Organic Giloy Stem, Black Pepper Extract.',
+        ritual: 'Add 5 drops to warm water or herbal tea every morning.'
+      },
+      {
+        id: 'p2',
+        name: 'Saffron & Ginger Digestive Infusion',
+        category: 'Digestion',
+        price: 549,
+        size: '100 g · Loose Leaf Tin',
+        image: IMAGES.ritual,
+        tagline: 'Warming Himalayan ginger, green cardamom, rose petals, and saffron threads.',
+        ingredients: 'Sun-dried Ginger Root, Green Cardamom, Kashmiri Saffron, Mint Leaf, Damascus Rose.',
+        ritual: 'Steep 1 tsp in 200 ml hot water for 4 minutes after meals.'
+      },
+      {
+        id: 'p3',
+        name: 'Organic Moringa Leaf Superfood',
+        category: 'Daily Vitality',
+        price: 399,
+        size: '150 g · Ceramic-Sealed Pouch',
+        image: IMAGES.apothecary,
+        tagline: 'Shade-dried vibrant moringa leaf powder rich in plant micronutrients.',
+        ingredients: '100% Shade-Dried Organic Moringa Oleifera Leaves (No Fillers).',
+        ritual: 'Whisk 1/2 tsp into warm lemon water, smoothies, or soups.'
+      },
+      {
+        id: 'p4',
+        name: 'Ashwagandha & Brahmi Calm Elixir',
+        category: 'Calm & Sleep',
+        price: 599,
+        size: '60 ml · Botanical Tincture',
+        image: IMAGES.hero,
+        tagline: 'Adaptogenic root & leaf tonic formulated to ease mental fatigue and stress.',
+        ingredients: 'KSM-Style Organic Ashwagandha Root, Brahmi Leaf, Cinnamon Bark, Cardamom.',
+        ritual: 'Mix 1/2 dropper into warm oat/almond milk or herbal tea in the evening.'
+      },
+      {
+        id: 'p5',
+        name: 'Chamomile & Rose Night Tisane',
+        category: 'Calm & Sleep',
+        price: 429,
+        size: '75 g · Whole Blossom Jar',
+        image: IMAGES.ritual,
+        tagline: 'Whole golden chamomile flowers blended with fragrant dried rose petals.',
+        ingredients: 'Whole Egyptian Chamomile Flowers, Organic Rose Petals, Lemon Balm.',
+        ritual: 'Steep 1 tbsp in hot water 30 minutes before bedtime.'
+      },
+      {
+        id: 'p6',
+        name: 'Golden Turmeric & Cinnamon Latte',
+        category: 'Immunity',
+        price: 479,
+        size: '120 g · Small-Batch Blend',
+        image: IMAGES.hero,
+        tagline: 'High-curcumin heirloom turmeric with Ceylon cinnamon and crushed pepper.',
+        ingredients: 'Heirloom Lakadong Turmeric, Ceylon Cinnamon, Dry Ginger, Tellicherry Black Pepper.',
+        ritual: 'Simmer 1 tsp in warm milk or plant milk with a touch of raw honey.'
+      }
+    ];
+
+    const QUIZ_QUESTIONS = [
+      {
+        key: 'goal',
+        prompt: '1. What is your primary wellness focus right now?',
+        options: [
+          { value: 'calm', label: 'Calm mind & deeper sleep', sub: 'Unwind stress and restore restful nights' },
+          { value: 'energy', label: 'Clean daily vitality', sub: 'Steady energy without caffeine crashes' },
+          { value: 'immunity', label: 'Immunity & gut balance', sub: 'Warming digestion and seasonal strength' }
+        ]
+      },
+      {
+        key: 'rhythm',
+        prompt: '2. When do you feel most out of balance?',
+        options: [
+          { value: 'morning', label: 'Sluggish mornings', sub: 'Hard to wake up feeling fresh' },
+          { value: 'afternoon', label: 'Afternoon mental fog', sub: 'Focus dips after lunch' },
+          { value: 'night', label: 'Racing thoughts at night', sub: 'Difficulty switching off before bed' }
+        ]
+      },
+      {
+        key: 'pace',
+        prompt: '3. How much time can you dedicate to a daily ritual?',
+        options: [
+          { value: '5min', label: '5 minutes', sub: 'Quick herbal infusion + 3 deep breaths' },
+          { value: '15min', label: '15 minutes', sub: 'Breathwork + mindful morning tea' },
+          { value: '30min', label: '30+ minutes', sub: 'Full yoga flow, pranayama & herbal routine' }
+        ]
+      }
+    ];
+
+    // App State
+    let activePillar = 'herbal';
+    let activeBreathMode = 'anulom';
+    let breathRunning = false;
+    let breathTimer = null;
+    let breathPhaseIdx = 0;
+    let breathSecondsLeft = 4;
+    let breathCycles = 0;
+
+    let routineFilter = 'All';
+    let habits = loadStorage('hitayu_habits', DEFAULT_HABITS);
+    let bag = loadStorage('hitayu_bag', []);
+    let productCategory = 'All';
+    let productQuery = '';
+
+    let quizStep = 0;
+    let quizAnswers = {};
+
+    function loadStorage(key, fallback) {
+      try {
+        const raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : fallback;
+      } catch (e) {
+        return fallback;
+      }
+    }
+
+    function saveStorage(key, value) {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+      } catch (e) {}
+    }
+
+    function showToast(message) {
+      const container = document.getElementById('toast-container');
+      const el = document.createElement('div');
+      el.className = 'pointer-events-auto bg-forest text-oat px-4 py-3 rounded-2xl shadow-lg border border-turmeric/40 text-sm flex items-center gap-2.5 animate-fade-up';
+      el.innerHTML = `<span class="w-2 h-2 rounded-full bg-turmeric shrink-0"></span><span>${message}</span>`;
+      container.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = '0';
+        el.style.transition = 'opacity 0.3s ease';
+        setTimeout(() => el.remove(), 300);
+      }, 2800);
+    }
+
+    // --- Pillars ---
+    function renderPillars() {
+      const tabsEl = document.getElementById('pillar-tabs');
+      tabsEl.innerHTML = PILLARS.map(p => {
+        const active = p.id === activePillar;
+        return `<button type="button" data-pillar="${p.id}" class="pillar-tab px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
+          active
+            ? 'bg-forest text-oat shadow-sm'
+            : 'bg-oat text-forest border border-oat-border hover:border-forest/40'
+        }">${p.title}</button>`;
+      }).join('');
+
+      tabsEl.querySelectorAll('.pillar-tab').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activePillar = btn.dataset.pillar;
+          renderPillars();
+        });
+      });
+
+      const current = PILLARS.find(p => p.id === activePillar) || PILLARS[0];
+      const detailEl = document.getElementById('pillar-detail');
+      detailEl.innerHTML = `
+        <div class="lg:col-span-6 overflow-hidden rounded-2xl border border-oat-border">
+          <img src="${current.image}" alt="${current.title}" class="w-full h-auto object-cover aspect-[4/3]" />
+        </div>
+        <div class="lg:col-span-6 space-y-4">
+          <p class="text-xs uppercase tracking-[0.2em] text-terracotta font-semibold">${current.subtitle}</p>
+          <h3 class="font-display text-3xl sm:text-4xl font-semibold text-forest">${current.title}</h3>
+          <p class="text-forest/80 text-sm sm:text-base leading-relaxed">${current.description}</p>
+          <ul class="space-y-2 pt-1">
+            ${current.points.map(pt => `
+              <li class="flex items-start gap-2.5 text-sm text-forest">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-turmeric shrink-0"></span>
+                <span>${pt}</span>
+              </li>
+            `).join('')}
+          </ul>
+          <div class="mt-4 p-4 rounded-2xl bg-sage/60 border border-forest/10">
+            <p class="text-[11px] uppercase tracking-widest text-forest font-bold">Today's Micro-Practice</p>
+            <p class="text-sm text-forest/85 mt-1">${current.microPractice}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    // --- Breathwork Studio ---
+    function getActiveBreathMode() {
+      return BREATH_MODES.find(m => m.id === activeBreathMode) || BREATH_MODES[0];
+    }
+
+    function renderBreathModes() {
+      const listEl = document.getElementById('breath-mode-list');
+      listEl.innerHTML = BREATH_MODES.map(m => {
+        const active = m.id === activeBreathMode;
+        return `
+          <button type="button" data-breath="${m.id}" class="breath-mode-btn w-full text-left p-3.5 rounded-2xl border transition-all ${
+            active
+              ? 'bg-sage/70 border-forest text-forest shadow-sm'
+              : 'bg-oat border-oat-border text-forest/80 hover:border-forest/40'
+          }">
+            <div class="flex items-center justify-between">
+              <span class="font-semibold text-sm">${m.name}</span>
+              ${active ? '<span class="text-[11px] font-semibold uppercase tracking-wider text-terracotta">Selected</span>' : ''}
+            </div>
+            <p class="text-xs text-sage-muted mt-0.5">${m.desc}</p>
+          </button>
+        `;
+      }).join('');
+
+      listEl.querySelectorAll('.breath-mode-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectBreathMode(btn.dataset.breath);
+        });
+      });
+    }
+
+    function selectBreathMode(modeId) {
+      stopBreathTimer();
+      activeBreathMode = modeId;
+      breathPhaseIdx = 0;
+      const mode = getActiveBreathMode();
+      breathSecondsLeft = mode.phases[0].seconds;
+      document.getElementById('breath-active-name').textContent = mode.name;
+      document.getElementById('breath-phase-label').textContent = 'Ready';
+      document.getElementById('breath-countdown').textContent = 'Press Start';
+      document.getElementById('breath-cue').textContent = mode.phases[0].cue;
+      document.getElementById('breath-orb').style.transform = 'scale(1)';
+      document.getElementById('breath-ring').style.transform = 'scale(1)';
+      renderBreathModes();
+    }
+
+    function updateBreathVisuals() {
+      const mode = getActiveBreathMode();
+      const phase = mode.phases[breathPhaseIdx];
+      document.getElementById('breath-phase-label').textContent = (t('phases')[phase.label] || phase.label);
+      document.getElementById('breath-countdown').textContent = `${breathSecondsLeft}s`;
+      document.getElementById('breath-cue').textContent = phase.cue;
+      document.getElementById('breath-orb').style.transform = `scale(${phase.scale})`;
+      document.getElementById('breath-ring').style.transform = `scale(${phase.scale + 0.08})`;
+      document.getElementById('breath-cycles').textContent = String(breathCycles);
+    }
+
+    function stopBreathTimer() {
+      if (breathTimer) {
+        clearInterval(breathTimer);
+        breathTimer = null;
+      }
+      breathRunning = false;
+      document.getElementById('breath-toggle-btn').textContent = t('btn_start');
+    }
+
+    function toggleBreathSession() {
+      if (breathRunning) {
+        stopBreathTimer();
+        document.getElementById('breath-toggle-btn').textContent = t('btn_resume');
+        return;
+      }
+      breathRunning = true;
+      document.getElementById('breath-toggle-btn').textContent = t('btn_pause');
+      updateBreathVisuals();
+      if (breathTimer) clearInterval(breathTimer);
+      breathTimer = setInterval(() => {
+        breathSecondsLeft -= 1;
+        if (breathSecondsLeft <= 0) {
+          const mode = getActiveBreathMode();
+          breathPhaseIdx = (breathPhaseIdx + 1) % mode.phases.length;
+          if (breathPhaseIdx === 0) {
+            breathCycles += 1;
+          }
+          breathSecondsLeft = mode.phases[breathPhaseIdx].seconds;
+        }
+        updateBreathVisuals();
+      }, 1000);
+    }
+
+    function resetBreathSession() {
+      stopBreathTimer();
+      breathCycles = 0;
+      document.getElementById('breath-cycles').textContent = '0';
+      selectBreathMode(activeBreathMode);
+    }
+
+    // --- Daily Dinacharya Routine ---
+    function renderRoutine() {
+      const times = ['All', 'Morning', 'Midday', 'Evening'];
+      const filtersEl = document.getElementById('routine-filters');
+      filtersEl.innerHTML = times.map(t_item => `
+        <button type="button" data-time="${t_item}" class="routine-filter-btn px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
+          routineFilter === t_item
+            ? 'bg-forest text-oat'
+            : 'bg-oat text-forest border border-oat-border hover:border-forest/40'
+        }">${t('times')[t_item] || t_item}</button>
+      `).join('');
+
+      filtersEl.querySelectorAll('.routine-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          routineFilter = btn.dataset.time;
+          renderRoutine();
+        });
+      });
+
+      const doneCount = habits.filter(h => h.done).length;
+      const total = habits.length;
+      const pct = total > 0 ? Math.round((doneCount / total) * 100) : 0;
+      const circumference = 150.8;
+      const offset = circumference - (pct / 100) * circumference;
+
+      document.getElementById('routine-ring').style.strokeDashoffset = String(offset);
+      document.getElementById('routine-percent').textContent = `${pct}%`;
+      document.getElementById('routine-done-count').textContent = String(doneCount);
+      document.getElementById('routine-total-count').textContent = String(total);
+
+      const visible = routineFilter === 'All' ? habits : habits.filter(h => h.time === routineFilter);
+      const listEl = document.getElementById('routine-list');
+      listEl.innerHTML = visible.map(h => `
+        <button type="button" data-habit-id="${h.id}" class="habit-card text-left p-4 rounded-2xl border transition-all flex flex-col justify-between gap-3 ${
+          h.done
+            ? 'bg-forest text-oat border-forest shadow-sm'
+            : 'bg-oat text-forest border-oat-border hover:border-forest/40'
+        }">
+          <div class="flex items-start justify-between gap-2 w-full">
+            <span class="text-[10px] uppercase tracking-widest font-semibold px-2.5 py-0.5 rounded-full ${
+              h.done ? 'bg-oat/15 text-turmeric' : 'bg-oat-warm text-sage-muted'
+            }">${h.time}</span>
+            <span class="w-5 h-5 rounded-full border flex items-center justify-center shrink-0 ${
+              h.done ? 'bg-turmeric border-turmeric text-forest-dark' : 'border-oat-border'
+            }">
+              ${h.done ? '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>' : ''}
+            </span>
+          </div>
+          <div>
+            <p class="font-semibold text-sm ${h.done ? 'line-through opacity-90' : ''}">${h.title}</p>
+            <p class="text-xs mt-1 ${h.done ? 'text-oat/70' : 'text-sage-muted'}">${h.note}</p>
+          </div>
+        </button>
+      `).join('');
+
+      listEl.querySelectorAll('.habit-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const id = card.dataset.habitId;
+          habits = habits.map(h => h.id === id ? { ...h, done: !h.done } : h);
+          saveStorage('hitayu_habits', habits);
+          renderRoutine();
+        });
+      });
+    }
+
+    // --- Apothecary & Bag ---
+    function renderProducts() {
+      const categories = ['All', 'Immunity', 'Calm & Sleep', 'Digestion', 'Daily Vitality'];
+      const catEl = document.getElementById('category-filters');
+      catEl.innerHTML = categories.map(c => `
+        <button type="button" data-cat="${c}" class="cat-filter-btn px-4 py-2 rounded-full text-xs font-semibold transition-all ${
+          productCategory === c
+            ? 'bg-forest text-oat'
+            : 'bg-oat-warm text-forest border border-oat-border hover:border-forest/40'
+        }">${t('cats')[c] || c}</button>
+      `).join('');
+
+      catEl.querySelectorAll('.cat-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          productCategory = btn.dataset.cat;
+          renderProducts();
+        });
+      });
+
+      const q = productQuery.trim().toLowerCase();
+      const filtered = PRODUCTS.filter(p => {
+        const matchCat = productCategory === 'All' || p.category === productCategory;
+        const matchQ = !q || p.name.toLowerCase().includes(q) || p.tagline.toLowerCase().includes(q) || p.ingredients.toLowerCase().includes(q);
+        return matchCat && matchQ;
+      });
+
+      const gridEl = document.getElementById('product-grid');
+      if (filtered.length === 0) {
+        gridEl.innerHTML = `<div class="col-span-full text-center py-12 bg-oat-warm/50 rounded-3xl border border-oat-border text-sage-muted text-sm">No herbal blends match "${productQuery}". Try clearing the search filter.</div>`;
+        return;
+      }
+
+      gridEl.innerHTML = filtered.map(p => `
+        <article class="bg-oat rounded-3xl border border-oat-border overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow">
+          <div class="relative overflow-hidden aspect-[4/3] bg-oat-warm">
+            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-oat/90 backdrop-blur-sm text-[11px] font-semibold text-forest">${p.category}</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between gap-4">
+            <div>
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="font-display text-2xl font-semibold text-forest leading-snug">${p.name}</h3>
+                <span class="font-semibold text-forest text-base shrink-0">₹${p.price}</span>
+              </div>
+              <p class="text-xs text-sage-muted mt-0.5">${p.size}</p>
+              <p class="text-sm text-forest/75 mt-2.5 leading-relaxed">${p.tagline}</p>
+            </div>
+            <div class="flex items-center gap-2 pt-2 border-t border-oat-border/70">
+              <button type="button" data-quickview="${p.id}" class="quickview-btn flex-1 py-2.5 rounded-full bg-oat-warm text-forest text-xs font-semibold hover:bg-oat-border/60 transition-colors">
+                ${t('btn_ingredients')}
+              </button>
+              <button type="button" data-add="${p.id}" class="add-bag-btn flex-1 py-2.5 rounded-full bg-forest text-oat text-xs font-semibold hover:bg-forest-light transition-colors">
+                ${t('btn_add_bag')}
+              </button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+
+      gridEl.querySelectorAll('.quickview-btn').forEach(btn => {
+        btn.addEventListener('click', () => openProductModal(btn.dataset.quickview));
+      });
+      gridEl.querySelectorAll('.add-bag-btn').forEach(btn => {
+        btn.addEventListener('click', () => addToBag(btn.dataset.add));
+      });
+    }
+
+    function openProductModal(productId) {
+      const p = PRODUCTS.find(item => item.id === productId);
+      if (!p) return;
+      const modal = document.getElementById('product-modal');
+      const body = document.getElementById('product-modal-body');
+      body.innerHTML = `
+        <div class="relative aspect-[16/9] bg-oat-warm">
+          <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover" />
+          <button id="close-product-modal" type="button" aria-label="Close" class="absolute top-3 right-3 p-2 rounded-full bg-oat/90 text-forest hover:bg-oat">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        </div>
+        <div class="p-6 space-y-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <span class="text-[11px] uppercase tracking-widest text-terracotta font-semibold">${p.category} · ${p.size}</span>
+              <h3 class="font-display text-3xl font-semibold text-forest mt-0.5">${p.name}</h3>
+            </div>
+            <span class="font-display text-2xl font-bold text-forest">₹${p.price}</span>
+          </div>
+          <p class="text-sm text-forest/80">${p.tagline}</p>
+          <div class="p-3.5 rounded-2xl bg-oat-warm/80 space-y-2 text-xs">
+            <p><strong class="text-forest">Key Botanicals:</strong> <span class="text-forest/80">${p.ingredients}</span></p>
+            <p><strong class="text-forest">Daily Ritual:</strong> <span class="text-forest/80">${p.ritual}</span></p>
+          </div>
+          <button id="modal-add-btn" type="button" class="w-full py-3 rounded-full bg-forest text-oat text-sm font-semibold hover:bg-forest-light transition-colors">
+            Add to Wellness Bag — ₹${p.price}
+          </button>
+        </div>
+      `;
+      modal.classList.remove('hidden');
+      document.getElementById('close-product-modal').addEventListener('click', () => modal.classList.add('hidden'));
+      document.getElementById('modal-add-btn').addEventListener('click', () => {
+        addToBag(p.id);
+        modal.classList.add('hidden');
+      });
+    }
+
+    function addToBag(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+      const existing = bag.find(item => item.id === productId);
+      if (existing) {
+        bag = bag.map(item => item.id === productId ? { ...item, qty: item.qty + 1 } : item);
+      } else {
+        bag = [...bag, { id: product.id, qty: 1 }];
+      }
+      saveStorage('hitayu_bag', bag);
+      renderBag();
+      showToast(`Added ${product.name} to your bag`);
+    }
+
+    function updateBagQty(productId, delta) {
+      bag = bag
+        .map(item => item.id === productId ? { ...item, qty: item.qty + delta } : item)
+        .filter(item => item.qty > 0);
+      saveStorage('hitayu_bag', bag);
+      renderBag();
+    }
+
+    function renderBag() {
+      const totalItems = bag.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('bag-count-badge').textContent = String(totalItems);
+
+      const listEl = document.getElementById('bag-items-list');
+      const subtotal = bag.reduce((sum, item) => {
+        const p = PRODUCTS.find(x => x.id === item.id);
+        return sum + (p ? p.price * item.qty : 0);
+      }, 0);
+
+      document.getElementById('bag-subtotal').textContent = `₹${subtotal}`;
+      const shippingEl = document.getElementById('bag-shipping-msg');
+      if (subtotal >= 999) {
+        shippingEl.textContent = 'You unlocked complimentary organic shipping!';
+      } else {
+        shippingEl.textContent = `Add ₹${999 - subtotal} more for complimentary shipping`;
+      }
+
+      const checkoutBtn = document.getElementById('checkout-btn');
+      checkoutBtn.disabled = bag.length === 0;
+
+      if (bag.length === 0) {
+        listEl.innerHTML = `
+          <div class="text-center py-14 space-y-2">
+            <p class="font-display text-2xl text-forest">Your bag is empty</p>
+            <p class="text-xs text-sage-muted">Explore our small-batch herbal formulations to begin your ritual.</p>
+          </div>
+        `;
+        return;
+      }
+
+      listEl.innerHTML = bag.map(item => {
+        const p = PRODUCTS.find(x => x.id === item.id);
+        if (!p) return '';
+        return `
+          <div class="flex gap-3.5 p-3 rounded-2xl bg-oat-warm/60 border border-oat-border">
+            <img src="${p.image}" alt="${p.name}" class="w-16 h-16 rounded-xl object-cover shrink-0" />
+            <div class="flex-1 min-w-0">
+              <p class="font-semibold text-sm text-forest truncate">${p.name}</p>
+              <p class="text-xs text-sage-muted">₹${p.price} each</p>
+              <div class="flex items-center gap-2 mt-2">
+                <button type="button" data-dec="${p.id}" class="bag-dec w-6 h-6 rounded-full bg-oat border border-oat-border text-xs font-bold text-forest hover:bg-oat-border/50">-</button>
+                <span class="text-xs font-semibold text-forest w-5 text-center">${item.qty}</span>
+                <button type="button" data-inc="${p.id}" class="bag-inc w-6 h-6 rounded-full bg-oat border border-oat-border text-xs font-bold text-forest hover:bg-oat-border/50">+</button>
+              </div>
+            </div>
+            <div class="text-right font-semibold text-sm text-forest">₹${p.price * item.qty}</div>
+          </div>
+        `;
+      }).join('');
+
+      listEl.querySelectorAll('.bag-dec').forEach(btn => {
+        btn.addEventListener('click', () => updateBagQty(btn.dataset.dec, -1));
+      });
+      listEl.querySelectorAll('.bag-inc').forEach(btn => {
+        btn.addEventListener('click', () => updateBagQty(btn.dataset.inc, 1));
+      });
+    }
+
+    // --- Ritual Quiz ---
+    function renderQuiz() {
+      const card = document.getElementById('quiz-card');
+      if (quizStep < QUIZ_QUESTIONS.length) {
+        const q = QUIZ_QUESTIONS[quizStep];
+        card.innerHTML = `
+          <div class="flex items-center justify-between text-xs text-sage-muted mb-4">
+            <span>Step ${quizStep + 1} of ${QUIZ_QUESTIONS.length}</span>
+            <div class="flex gap-1.5">
+              ${QUIZ_QUESTIONS.map((_, idx) => `<span class="h-1.5 w-8 rounded-full ${idx <= quizStep ? 'bg-forest' : 'bg-oat-border'}"></span>`).join('')}
+            </div>
+          </div>
+          <h3 class="font-display text-2xl sm:text-3xl font-semibold text-forest">${q.prompt}</h3>
+          <div class="grid sm:grid-cols-3 gap-3.5 mt-6">
+            ${q.options.map(opt => `
+              <button type="button" data-quiz-val="${opt.value}" class="quiz-opt-btn text-left p-4 rounded-2xl border border-oat-border bg-oat-warm/40 hover:border-forest hover:bg-sage/50 transition-all">
+                <p class="font-semibold text-sm text-forest">${opt.label}</p>
+                <p class="text-xs text-sage-muted mt-1">${opt.sub}</p>
+              </button>
+            `).join('')}
+          </div>
+        `;
+        card.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            quizAnswers[q.key] = btn.dataset.quizVal;
+            quizStep += 1;
+            renderQuiz();
+          });
+        });
+        return;
+      }
+
+      // Compute personalized recommendation
+      let recProduct = PRODUCTS[0];
+      let recBreath = 'anulom';
+      let recTip = 'Start your morning with warm spiced water and 5 minutes of sun-facing mobility.';
+
+      if (quizAnswers.goal === 'calm' || quizAnswers.rhythm === 'night') {
+        recProduct = PRODUCTS.find(p => p.id === 'p4') || PRODUCTS[3];
+        recBreath = 'calm478';
+        recTip = 'Dim overhead lights 45 minutes before bed, sip a warm adaptogenic elixir, and complete 4 rounds of 4-7-8 breathing.';
+      } else if (quizAnswers.goal === 'energy') {
+        recProduct = PRODUCTS.find(p => p.id === 'p3') || PRODUCTS[2];
+        recBreath = 'surya';
+        recTip = 'Pair 10 minutes of morning Surya Namaskar with a nutrient-rich Moringa tonic to sustain crisp afternoon energy.';
+      } else {
+        recProduct = PRODUCTS.find(p => p.id === 'p2') || PRODUCTS[1];
+        recBreath = 'anulom';
+        recTip = 'Enjoy a warm Saffron & Ginger infusion after meals and take 5 unhurried Anulom Vilom breaths mid-afternoon.';
+      }
+
+      const breathObj = BREATH_MODES.find(m => m.id === recBreath) || BREATH_MODES[0];
+
+      card.innerHTML = `
+        <div class="animate-fade-up space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <p class="text-xs uppercase tracking-[0.2em] text-terracotta font-semibold">Your Personalized Hitayu Blueprint</p>
+              <h3 class="font-display text-3xl font-semibold text-forest mt-1">${recProduct.name} + ${breathObj.name.split('·')[0].trim()}</h3>
+            </div>
+            <button id="retake-quiz-btn" type="button" class="text-xs font-semibold text-sage-muted hover:text-forest underline">Retake Quiz</button>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-5">
+            <div class="p-4 rounded-2xl bg-oat-warm/70 border border-oat-border flex gap-4 items-center">
+              <img src="${recProduct.image}" alt="${recProduct.name}" class="w-20 h-20 rounded-xl object-cover shrink-0" />
+              <div class="space-y-1">
+                <p class="text-xs text-terracotta font-semibold">Recommended Blend · ₹${recProduct.price}</p>
+                <p class="font-semibold text-sm text-forest">${recProduct.name}</p>
+                <button id="quiz-add-product" type="button" class="mt-1 px-3.5 py-1.5 rounded-full bg-forest text-oat text-xs font-semibold hover:bg-forest-light">Add to Bag</button>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-sage/60 border border-forest/15 flex flex-col justify-between gap-2">
+              <div>
+                <p class="text-xs text-forest font-semibold uppercase tracking-wider">Daily Practice (${quizAnswers.pace || '15min'})</p>
+                <p class="text-sm text-forest/85 mt-1">${recTip}</p>
+              </div>
+              <a href="#breathwork" id="quiz-try-breath" class="inline-flex items-center gap-1.5 text-xs font-semibold text-terracotta hover:underline">
+                Open ${breathObj.name} in Studio &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('retake-quiz-btn').addEventListener('click', () => {
+        quizStep = 0;
+        quizAnswers = {};
+        renderQuiz();
+      });
+      document.getElementById('quiz-add-product').addEventListener('click', () => addToBag(recProduct.id));
+      document.getElementById('quiz-try-breath').addEventListener('click', () => selectBreathMode(recBreath));
+    }
+
+    // --- Event Listeners ---
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
+    });
+
+    document.getElementById('breath-toggle-btn').addEventListener('click', toggleBreathSession);
+    document.getElementById('breath-reset-btn').addEventListener('click', resetBreathSession);
+
+    document.getElementById('routine-reset-btn').addEventListener('click', () => {
+      habits = habits.map(h => ({ ...h, done: false }));
+      saveStorage('hitayu_habits', habits);
+      renderRoutine();
+      showToast('Daily routine reset for a fresh start');
+    });
+
+    document.getElementById('add-habit-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.getElementById('new-habit-input');
+      const timeSel = document.getElementById('new-habit-time');
+      const title = input.value.trim();
+      if (!title) return;
+      habits = [...habits, { id: 'h' + Date.now(), title, time: timeSel.value, note: 'Personal Hitayu ritual', done: false }];
+      saveStorage('hitayu_habits', habits);
+      input.value = '';
+      renderRoutine();
+      showToast(`Added "${title}" to your routine`);
+    });
+
+    document.getElementById('product-search').addEventListener('input', (e) => {
+      productQuery = e.target.value;
+      renderProducts();
+    });
+
+    document.getElementById('open-bag-btn').addEventListener('click', () => {
+      document.getElementById('bag-drawer-overlay').classList.remove('hidden');
+    });
+    document.getElementById('close-bag-btn').addEventListener('click', () => {
+      document.getElementById('bag-drawer-overlay').classList.add('hidden');
+    });
+    document.getElementById('bag-drawer-overlay').addEventListener('click', (e) => {
+      if (e.target.id === 'bag-drawer-overlay') {
+        document.getElementById('bag-drawer-overlay').classList.add('hidden');
+      }
+    });
+    document.getElementById('product-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'product-modal') {
+        document.getElementById('product-modal').classList.add('hidden');
+      }
+    });
+
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      if (bag.length === 0) return;
+      const count = bag.reduce((s, i) => s + i.qty, 0);
+      bag = [];
+      saveStorage('hitayu_bag', bag);
+      renderBag();
+      document.getElementById('bag-drawer-overlay').classList.add('hidden');
+      showToast(`Order inquiry received for ${count} item(s). Thank you for choosing Hitayu!`);
+    });
+
+    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = document.getElementById('newsletter-email');
+      if (!emailInput.value.trim()) return;
+      emailInput.value = '';
+      showToast('Welcome to the Hitayu Organic Journal!');
+    });
+
+
+    // --- Indian Language Translation Engine ---
+    const TRANSLATIONS = {
+      en: {
+        langName: 'English',
+        brand_tag: 'Organic Living',
+        nav_pillars: 'Pillars',
+        nav_breathwork: 'Breathwork',
+        nav_routine: 'Daily Routine',
+        nav_apothecary: 'Apothecary',
+        nav_quiz: 'Ritual Quiz',
+        nav_bag: 'Bag',
+        hero_badge: 'Ayurveda-Inspired Organic Lifestyle',
+        hero_title_1: 'Rooted in Nature.',
+        hero_title_2: 'Crafted for Daily Vitality.',
+        hero_desc: 'Hitayu brings together pure botanical formulations, grounded herbal habits, and mindful yoga practices—helping you build calm, resilient energy from sunrise to rest.',
+        hero_cta_1: 'Explore Herbal Apothecary',
+        hero_cta_2: 'Start Guided Breathwork',
+        pillars_eyebrow: 'The Hitayu Philosophy',
+        pillars_title: 'Four Pillars of Balanced Organic Living',
+        pillars_desc: 'Select a pillar below to explore how Hitayu weaves ancient Ayurvedic wisdom into simple, repeatable habits.',
+        breath_eyebrow: 'Pranayama Studio',
+        breath_title: 'Pause & Reset with Guided Breathwork',
+        breath_desc: 'Just two minutes of conscious breathing lowers nervous tension and sharpens focus before meals, work, or sleep. Pick a cadence and follow the breathing orb.',
+        routine_eyebrow: 'Dinacharya Tracker',
+        routine_title: 'Build Your Daily Herbal & Yoga Rhythm',
+        routine_desc: 'Check off your daily organic rituals as you complete them, or add your own personal wellness habit.',
+        shop_eyebrow: 'Hitayu Apothecary',
+        shop_title: 'Small-Batch Herbal Formulations',
+        shop_desc: 'Clean, potent botanicals harvested ethically and formulated for everyday immunity, calm focus, and gentle digestion.',
+        quiz_eyebrow: 'Personalized Guidance',
+        quiz_title: 'Discover Your Hitayu Daily Ritual',
+        quiz_desc: 'Answer 3 quick questions to get a tailored herbal blend, breathwork cadence, and morning habit.',
+        bag_title: 'Your Wellness Bag',
+        bag_checkout: 'Place Order Inquiry',
+        btn_start: 'Start Session',
+        btn_pause: 'Pause Session',
+        btn_resume: 'Resume Session',
+        btn_reset: 'Reset',
+        btn_add_bag: 'Add to Bag',
+        btn_ingredients: 'Ingredients & Ritual',
+        search_placeholder: 'Search herbs or benefits...',
+        habit_placeholder: 'Add a personal ritual...',
+        phases: { Inhale: 'Inhale', Hold: 'Hold', Exhale: 'Exhale', Rest: 'Rest', Ready: 'Ready' },
+        times: { All: 'All', Morning: 'Morning', Midday: 'Midday', Evening: 'Evening' },
+        cats: { All: 'All', Immunity: 'Immunity', 'Calm & Sleep': 'Calm & Sleep', Digestion: 'Digestion', 'Daily Vitality': 'Daily Vitality' }
+      },
+      hi: {
+        langName: 'हिन्दी',
+        brand_tag: 'जैविक जीवनशैली',
+        nav_pillars: 'स्तंभ',
+        nav_breathwork: 'प्राणायाम',
+        nav_routine: 'दिनचर्या',
+        nav_apothecary: 'औषधालय',
+        nav_quiz: 'अनुष्ठान क्विज़',
+        nav_bag: 'बैग',
+        hero_badge: 'आयुर्वेद-प्रेरित जैविक जीवनशैली',
+        hero_title_1: 'प्रकृति से जुड़ा।',
+        hero_title_2: 'दैनिक स्फूर्ति के लिए निर्मित।',
+        hero_desc: 'हितायु शुद्ध जड़ी-बूटियों, स्वस्थ हर्बल आदतों और सचेत योग अभ्यास को एक साथ लाता है—ताकि आप सूर्योदय से विश्राम तक शांत और स्थिर ऊर्जा बनाए रखें।',
+        hero_cta_1: 'हर्बल औषधालय देखें',
+        hero_cta_2: 'प्राणायाम शुरू करें',
+        pillars_eyebrow: 'हितायु दर्शन',
+        pillars_title: 'संतुलित जैविक जीवन के चार स्तंभ',
+        pillars_desc: 'नीचे किसी भी स्तंभ को चुनें और जानें कि हितायु प्राचीन आयुर्वेदिक ज्ञान को सरल दैनिक आदतों में कैसे पिरोता है।',
+        breath_eyebrow: 'प्राणायाम स्टूडियो',
+        breath_title: 'निर्देशित श्वास अभ्यास से मन शांत करें',
+        breath_desc: 'केवल दो मिनट का सचेत प्राणायाम तनाव कम करता है और भोजन, कार्य या नींद से पहले एकाग्रता बढ़ाता है।',
+        routine_eyebrow: 'दिनचर्या ट्रैकर',
+        routine_title: 'अपनी दैनिक हर्बल और योग लय बनाएं',
+        routine_desc: 'अपनी दैनिक जैविक आदतों को पूरा होने पर टिक करें या अपनी व्यक्तिगत आदत जोड़ें।',
+        shop_eyebrow: 'हितायु औषधालय',
+        shop_title: 'शुद्ध हर्बल उत्पाद संग्रह',
+        shop_desc: 'प्रतिरक्षा, शांत एकाग्रता और बेहतर पाचन के लिए नैतिक रूप से प्राप्त शुद्ध जड़ी-बूटियों से तैयार।',
+        quiz_eyebrow: 'व्यक्तिगत मार्गदर्शन',
+        quiz_title: 'अपना हितायु दैनिक अनुष्ठान जानें',
+        quiz_desc: '3 सरल प्रश्नों के उत्तर दें और अपने लिए उपयुक्त हर्बल मिश्रण, प्राणायाम और सुबह की आदत पाएं।',
+        bag_title: 'आपका वेलनेस बैग',
+        bag_checkout: 'ऑर्डर पूछताछ भेजें',
+        btn_start: 'सत्र शुरू करें',
+        btn_pause: 'रोकें',
+        btn_resume: 'जारी रखें',
+        btn_reset: 'रीसेट',
+        btn_add_bag: 'बैग में जोड़ें',
+        btn_ingredients: 'सामग्री और विधि',
+        search_placeholder: 'जड़ी-बूटी या लाभ खोजें...',
+        habit_placeholder: 'अपनी आदत जोड़ें...',
+        phases: { Inhale: 'श्वास लें', Hold: 'रोकें', Exhale: 'श्वास छोड़ें', Rest: 'विश्राम', Ready: 'तैयार' },
+        times: { All: 'सभी', Morning: 'प्रातः', Midday: 'दोपहर', Evening: 'संध्या' },
+        cats: { All: 'सभी', Immunity: 'प्रतिरक्षा', 'Calm & Sleep': 'शांति और नींद', Digestion: 'पाचन', 'Daily Vitality': 'दैनिक ऊर्जा' }
+      },
+      or: {
+        langName: 'ଓଡ଼ିଆ',
+        brand_tag: 'ଜୈବିକ ଜୀବନଶୈଳୀ',
+        nav_pillars: 'ସ୍ତମ୍ଭ',
+        nav_breathwork: 'ପ୍ରାଣାୟାମ',
+        nav_routine: 'ଦିନଚର୍ଯ୍ୟା',
+        nav_apothecary: 'ଔଷଧାଳୟ',
+        nav_quiz: 'ଅଭ୍ୟାସ କୁଇଜ୍',
+        nav_bag: 'ବ୍ୟାଗ୍',
+        hero_badge: 'ଆୟୁର୍ବେଦ-ପ୍ରେରିତ ଜୈବିକ ଜୀବନଶୈଳୀ',
+        hero_title_1: 'ପ୍ରକୃତି ସହିତ ଜଡ଼ିତ।',
+        hero_title_2: 'ଦୈନନ୍ଦିନ ସୁସ୍ଥତା ପାଇଁ ନିର୍ମିତ।',
+        hero_desc: 'ହିତାୟୁ ଶୁଦ୍ଧ ବନୌଷଧି, ସୁସ୍ଥ ହର୍ବାଲ୍ ଅଭ୍ୟାସ ଏବଂ ସଚେତନ ଯୋଗକୁ ଏକତ୍ରିତ କରେ—ଯାହା ଆପଣଙ୍କୁ ସୂର୍ଯ୍ୟୋଦୟରୁ ବିଶ୍ରାମ ପର୍ଯ୍ୟନ୍ତ ଶାନ୍ତ ଓ ସ୍ଥିର ଶକ୍ତି ଦିଏ।',
+        hero_cta_1: 'ହର୍ବାଲ୍ ଔଷଧାଳୟ ଦେଖନ୍ତୁ',
+        hero_cta_2: 'ପ୍ରାଣାୟାମ ଆରମ୍ଭ କରନ୍ତୁ',
+        pillars_eyebrow: 'ହିତାୟୁ ଦର୍ଶନ',
+        pillars_title: 'ସନ୍ତୁଳିତ ଜୈବିକ ଜୀବନର ଚାରିଟି ସ୍ତମ୍ଭ',
+        pillars_desc: 'ହିତାୟୁ କିପରି ପ୍ରାଚୀନ ଆୟୁର୍ବେଦିକ ଜ୍ଞାନକୁ ସରଳ ଦୈନନ୍ଦିନ ଅଭ୍ୟାସରେ ପରିଣତ କରେ ତାହା ଜାଣିବା ପାଇଁ ଗୋଟିଏ ସ୍ତମ୍ଭ ବାଛନ୍ତୁ।',
+        breath_eyebrow: 'ପ୍ରାଣାୟାମ ଷ୍ଟୁଡିଓ',
+        breath_title: 'ନିର୍ଦ୍ଦେଶିତ ଶ୍ୱାସ ଅଭ୍ୟାସରେ ମନ ଶାନ୍ତ କରନ୍ତୁ',
+        breath_desc: 'ମାତ୍ର ଦୁଇ ମିନିଟର ସଚେତନ ପ୍ରାଣାୟାମ ମାନସିକ ଚାପ କମାଏ ଏବଂ କାମ କିମ୍ବା ଶୋଇବା ପୂର୍ବରୁ ଏକାଗ୍ରତା ବଢ଼ାଏ।',
+        routine_eyebrow: 'ଦିନଚର୍ଯ୍ୟା ଟ୍ରାକର୍',
+        routine_title: 'ଆପଣଙ୍କର ଦୈନନ୍ଦିନ ହର୍ବାଲ୍ ଓ ଯୋଗ ଅଭ୍ୟାସ ଗଢ଼ନ୍ତୁ',
+        routine_desc: 'ଦୈନନ୍ଦିନ ଜୈବିକ ଅଭ୍ୟାସ ସମ୍ପୂର୍ଣ୍ଣ ହେଲେ ଟିକ୍ କରନ୍ତୁ କିମ୍ବା ନିଜର ନୂଆ ଅଭ୍ୟାସ ଯୋଗ କରନ୍ତୁ।',
+        shop_eyebrow: 'ହିତାୟୁ ଔଷଧାଳୟ',
+        shop_title: 'ଶୁଦ୍ଧ ହର୍ବାଲ୍ ଉତ୍ପାଦ ସଂଗ୍ରହ',
+        shop_desc: 'ରୋଗ ପ୍ରତିରୋଧକ ଶକ୍ତି, ମାନସିକ ଶାନ୍ତି ଏବଂ ସୁସ୍ଥ ପାଚନ ପାଇଁ ଶୁଦ୍ଧ ବନୌଷଧିରୁ ପ୍ରସ୍ତୁତ।',
+        quiz_eyebrow: 'ବ୍ୟକ୍ତିଗତ ମାର୍ଗଦର୍ଶନ',
+        quiz_title: 'ଆପଣଙ୍କର ହିତାୟୁ ଦୈନନ୍ଦିନ ଅଭ୍ୟାସ ଜାଣନ୍ତୁ',
+        quiz_desc: '୩ଟି ସରଳ ପ୍ରଶ୍ନର ଉତ୍ତର ଦିଅନ୍ତୁ ଏବଂ ଉପଯୁକ୍ତ ହର୍ବାଲ୍ ମିଶ୍ରଣ, ପ୍ରାଣାୟାମ ଓ ସକାଳର ଅଭ୍ୟାସ ପାଆନ୍ତୁ।',
+        bag_title: 'ଆପଣଙ୍କର ୱେଲନେସ୍ ବ୍ୟାଗ୍',
+        bag_checkout: 'ଅର୍ଡର ଅନୁରୋଧ ପଠାନ୍ତୁ',
+        btn_start: 'ଆରମ୍ଭ କରନ୍ତୁ',
+        btn_pause: 'ବିରତି',
+        btn_resume: 'ପୁନଃ ଆରମ୍ଭ',
+        btn_reset: 'ରିସେଟ୍',
+        btn_add_bag: 'ବ୍ୟାଗ୍‌ରେ ଯୋଡ଼ନ୍ତୁ',
+        btn_ingredients: 'ଉପାଦାନ ଓ ବିଧି',
+        search_placeholder: 'ଔଷଧି କିମ୍ବା ଲାଭ ଖୋଜନ୍ତୁ...',
+        habit_placeholder: 'ନିଜର ଅଭ୍ୟାସ ଯୋଡ଼ନ୍ତୁ...',
+        phases: { Inhale: 'ଶ୍ୱାସ ନିଅନ୍ତୁ', Hold: 'ରଖନ୍ତୁ', Exhale: 'ଶ୍ୱାସ ଛାଡ଼ନ୍ତୁ', Rest: 'ବିଶ୍ରାମ', Ready: 'ପ୍ରସ୍ତୁତ' },
+        times: { All: 'ସବୁ', Morning: 'ସକାଳ', Midday: 'ମଧ୍ୟାହ୍ନ', Evening: 'ସନ୍ଧ୍ୟା' },
+        cats: { All: 'ସବୁ', Immunity: 'ପ୍ରତିରୋଧକ', 'Calm & Sleep': 'ଶାନ୍ତି ଓ ନିଦ୍ରା', Digestion: 'ପାଚନ', 'Daily Vitality': 'ଦୈନନ୍ଦିନ ଶକ୍ତି' }
+      },
+      bn: {
+        langName: 'বাংলা',
+        brand_tag: 'জৈব জীবনধারা',
+        nav_pillars: 'স্তম্ভ',
+        nav_breathwork: 'প্রাণায়াম',
+        nav_routine: 'দৈনন্দিন রুটিন',
+        nav_apothecary: 'ভেষজ ভাণ্ডার',
+        nav_quiz: 'অভ্যাস কুইজ',
+        nav_bag: 'ব্যাগ',
+        hero_badge: 'আয়ুর্বেদ-অনুপ্রাণিত জৈব জীবনধারা',
+        hero_title_1: 'প্রকৃতির সাথে যুক্ত।',
+        hero_title_2: 'প্রতিদিনের প্রাণশক্তির জন্য।',
+        hero_desc: 'হিতায়ু খাঁটি ভেষজ উপাদান, স্বাস্থ্যকর অভ্যাস এবং সচেতন যোগব্যায়ামকে একত্রিত করে—সকাল থেকে রাত পর্যন্ত শান্ত ও স্থির শক্তির জন্য।',
+        hero_cta_1: 'ভেষজ ভাণ্ডার দেখুন',
+        hero_cta_2: 'প্রাণায়াম শুরু করুন',
+        pillars_eyebrow: 'হিতায়ু দর্শন',
+        pillars_title: 'সুষম জৈব জীবনের চারটি স্তম্ভ',
+        pillars_desc: 'প্রাচীন আয়ুর্বেদিক জ্ঞান কীভাবে সহজ দৈনন্দিন অভ্যাসে রূপ নেয় তা জানতে একটি স্তম্ভ বেছে নিন।',
+        breath_eyebrow: 'প্রাণায়াম স্টুডিও',
+        breath_title: 'নির্দেশিত শ্বাস-প্রশ্বাসে মন শান্ত করুন',
+        breath_desc: 'মাত্র দুই মিনিটের সচেতন প্রাণায়াম মানসিক চাপ কমায় এবং মনোযোগ বাড়ায়।',
+        routine_eyebrow: 'দিনচর্য্যা ট্র্যাকার',
+        routine_title: 'আপনার দৈনন্দিন ভেষজ ও যোগ রুটিন গড়ুন',
+        routine_desc: 'প্রতিদিনের অভ্যাস সম্পূর্ণ হলে টিক দিন অথবা নতুন ব্যক্তিগত অভ্যাস যোগ করুন।',
+        shop_eyebrow: 'হিতায়ু ভেষজ ভাণ্ডার',
+        shop_title: 'খাঁটি ভেষজ পণ্যের সম্ভার',
+        shop_desc: 'রোগ প্রতিরোধ ক্ষমতা, মানসিক শান্তি এবং হজমের সুস্থতার জন্য খাঁটি ভেষজ থেকে প্রস্তুত।',
+        quiz_eyebrow: 'ব্যক্তিগত পরামর্শ',
+        quiz_title: 'আপনার হিতায়ু দৈনন্দিন অভ্যাস খুঁজুন',
+        quiz_desc: '৩টি সহজ প্রশ্নের উত্তর দিয়ে আপনার উপযোগী ভেষজ মিশ্রণ ও প্রাণায়াম জানুন।',
+        bag_title: 'আপনার ওয়েলনেস ব্যাগ',
+        bag_checkout: 'অর্ডার অনুরোধ পাঠান',
+        btn_start: 'শুরু করুন',
+        btn_pause: 'বিরতি',
+        btn_resume: 'চালিয়ে যান',
+        btn_reset: 'রিসেট',
+        btn_add_bag: 'ব্যাগে যোগ করুন',
+        btn_ingredients: 'উপাদান ও ব্যবহার',
+        search_placeholder: 'ভেষজ বা উপকারিতা খুঁজুন...',
+        habit_placeholder: 'ব্যক্তিগত অভ্যাস যোগ করুন...',
+        phases: { Inhale: 'শ্বাস নিন', Hold: 'ধরে রাখুন', Exhale: 'শ্বাস ছাড়ুন', Rest: 'বিশ্রাম', Ready: 'প্রস্তুত' },
+        times: { All: 'সব', Morning: 'সকাল', Midday: 'দুপুর', Evening: 'সন্ধ্যা' },
+        cats: { All: 'সব', Immunity: 'প্রতিরোধ ক্ষমতা', 'Calm & Sleep': 'শান্তি ও ঘুম', Digestion: 'হজম', 'Daily Vitality': 'দৈনিক শক্তি' }
+      },
+      mr: {
+        langName: 'मराठी',
+        brand_tag: 'सेंद्रिय जीवनशैली',
+        nav_pillars: 'आधारस्तंभ',
+        nav_breathwork: 'प्राणायाम',
+        nav_routine: 'दिनचर्या',
+        nav_apothecary: 'औषधालय',
+        nav_quiz: 'दिनक्रम क्विझ',
+        nav_bag: 'बॅग',
+        hero_badge: 'आयुर्वेद-प्रेरित सेंद्रिय जीवनशैली',
+        hero_title_1: 'निसर्गाशी जोडलेले.',
+        hero_title_2: 'दैनिक ऊर्जेसाठी घडवलेले.',
+        hero_desc: 'हितायु शुद्ध वनौषधी, आरोग्यदायी सवयी आणि योगाभ्यास एकत्र आणते—जेणेकरून दिवसभर शांत आणि सकारात्मक ऊर्जा टिकून राहील.',
+        hero_cta_1: 'औषधालय पहा',
+        hero_cta_2: 'प्राणायाम सुरू करा',
+        pillars_eyebrow: 'हितायु तत्त्वज्ञान',
+        pillars_title: 'संतुलित सेंद्रिय जीवनाचे चार स्तंभ',
+        pillars_desc: 'हितायु प्राचीन आयुर्वेदिक ज्ञान सोप्या दैनंदिन सवयींमध्ये कसे आणते ते पाहण्यासाठी स्तंभ निवडा.',
+        breath_eyebrow: 'प्राणायाम स्टुडिओ',
+        breath_title: 'मार्गदर्शित श्वसनाने मन शांत करा',
+        breath_desc: 'फक्त दोन मिनिटांचा सजग प्राणायाम ताण कमी करतो आणि एकाग्रता वाढवतो.',
+        routine_eyebrow: 'दिनचर्या ट्रॅकर',
+        routine_title: 'तुमची दैनंदिन हर्बल आणि योग लय तयार करा',
+        routine_desc: 'तुमच्या दैनंदिन सवयी पूर्ण झाल्यावर खूण करा किंवा तुमची नवीन सवय जोडा.',
+        shop_eyebrow: 'हितायु औषधालय',
+        shop_title: 'शुद्ध हर्बल उत्पादने',
+        shop_desc: 'रोगप्रतिकारशक्ती, शांत झोप आणि उत्तम पचनासाठी शुद्ध वनौषधींपासून बनवलेले.',
+        quiz_eyebrow: 'वैयक्तिक मार्गदर्शन',
+        quiz_title: 'तुमचा हितायु दैनिक दिनक्रम शोधा',
+        quiz_desc: '३ सोप्या प्रश्नांची उत्तरे देऊन योग्य हर्बल मिश्रण आणि प्राणायाम जाणून घ्या.',
+        bag_title: 'तुमची वेलनेस बॅग',
+        bag_checkout: 'ऑर्डर चौकशी पाठवा',
+        btn_start: 'सुरू करा',
+        btn_pause: 'थांबा',
+        btn_resume: 'पुढे चालू ठेवा',
+        btn_reset: 'रीसेट',
+        btn_add_bag: 'बॅगमध्ये जोडा',
+        btn_ingredients: 'घटक आणि पद्धत',
+        search_placeholder: 'वनौषधी किंवा फायदे शोधा...',
+        habit_placeholder: 'वैयक्तिक सवय जोडा...',
+        phases: { Inhale: 'श्वास घ्या', Hold: 'थांबवा', Exhale: 'श्वास सोडा', Rest: 'विश्रांती', Ready: 'तयार' },
+        times: { All: 'सर्व', Morning: 'सकाळ', Midday: 'दुपार', Evening: 'संध्याकाळ' },
+        cats: { All: 'सर्व', Immunity: 'प्रतिकारशक्ती', 'Calm & Sleep': 'शांती व झोप', Digestion: 'पचन', 'Daily Vitality': 'दैनिक ऊर्जा' }
+      },
+      ta: {
+        langName: 'தமிழ்',
+        brand_tag: 'இயற்கை வாழ்க்கை',
+        nav_pillars: 'தூண்கள்',
+        nav_breathwork: 'பிராணாயாமம்',
+        nav_routine: 'தினசரி பழக்கம்',
+        nav_apothecary: 'மூலிகை அங்காடி',
+        nav_quiz: 'பழக்க வினாடி',
+        nav_bag: 'பை',
+        hero_badge: 'ஆயுர்வேத இயற்கை வாழ்க்கை முறை',
+        hero_title_1: 'இயற்கையோடு இணைந்தது.',
+        hero_title_2: 'தினசரி புத்துணர்ச்சிக்காக.',
+        hero_desc: 'ஹிதாயு தூய மூலிகைகள், ஆரோக்கியமான பழக்கங்கள் மற்றும் யோகா பயிற்சிகளை ஒன்றிணைத்து நாள் முழுவதும் அமைதியான ஆற்றலை அளிக்கிறது.',
+        hero_cta_1: 'மூலிகை அங்காடி காண்க',
+        hero_cta_2: 'பிராணாயாமம் தொடங்கு',
+        pillars_eyebrow: 'ஹிதாயு தத்துவம்',
+        pillars_title: 'சமநிலையான இயற்கை வாழ்வின் நான்கு தூண்கள்',
+        pillars_desc: 'பழமையான ஆயுர்வேத அறிவை எளிய தினசரி பழக்கங்களாக மாற்றும் முறையை கீழே காண்க.',
+        breath_eyebrow: 'பிராணாயாமம் ஸ்டுடியோ',
+        breath_title: 'வழிகாட்டப்பட்ட மூச்சுப்பயிற்சி',
+        breath_desc: 'இரண்டு நிமிட கவனமான மூச்சுப்பயிற்சி மன அழுத்தத்தைக் குறைத்து கவனத்தை மேம்படுத்தும்.',
+        routine_eyebrow: 'தினச்சரியா கண்காணிப்பு',
+        routine_title: 'உங்கள் தினசரி மூலிகை & யோகா அட்டவணை',
+        routine_desc: 'தினசரி ஆரோக்கிய பழக்கங்களை முடித்ததும் குறிக்கவும் அல்லது புதிய பழக்கத்தைச் சேர்க்கவும்.',
+        shop_eyebrow: 'ஹிதாயு மூலிகை அங்காடி',
+        shop_title: 'தூய மூலிகை தயாரிப்புகள்',
+        shop_desc: 'நோய் எதிர்ப்பு சக்தி, அமைதியான தூக்கம் மற்றும் செரிமானத்திற்கு தூய இயற்கை மூலிகைகள்.',
+        quiz_eyebrow: 'தனிப்பயன் வழிகாட்டி',
+        quiz_title: 'உங்கள் ஹிதாயு தினசரி முறையைக் கண்டறியவும்',
+        quiz_desc: '3 எளிய கேள்விகளுக்கு பதிலளித்து உங்களுக்கு ஏற்ற மூலிகை மற்றும் மூச்சுப்பயிற்சியைப் பெறுங்கள்.',
+        bag_title: 'உங்கள் ஆரோக்கிய பை',
+        bag_checkout: 'ஆர்டர் விசாரணை அனுப்புக',
+        btn_start: 'தொடங்கு',
+        btn_pause: 'நிறுத்து',
+        btn_resume: 'தொடர்',
+        btn_reset: 'மீட்டமை',
+        btn_add_bag: 'பையில் சேர்',
+        btn_ingredients: 'மூலப்பொருட்கள் & முறை',
+        search_placeholder: 'மூலிகைகள் அல்லது நன்மைகள் தேடு...',
+        habit_placeholder: 'புதிய பழக்கம் சேர்க்கவும்...',
+        phases: { Inhale: 'உள்மூச்சு', Hold: 'நிறுத்து', Exhale: 'வெளிமூச்சு', Rest: 'ஓய்வு', Ready: 'தயார்' },
+        times: { All: 'அனைத்தும்', Morning: 'காலை', Midday: 'மதியம்', Evening: 'மாலை' },
+        cats: { All: 'அனைத்தும்', Immunity: 'எதிர்ப்பு சக்தி', 'Calm & Sleep': 'அமைதி & தூக்கம்', Digestion: 'செரிமானம்', 'Daily Vitality': 'தினசரி ஆற்றல்' }
+      },
+      te: {
+        langName: 'తెలుగు',
+        brand_tag: 'సేంద్రీయ జీవనశైలి',
+        nav_pillars: 'స్తంభాలు',
+        nav_breathwork: 'ప్రాణాయామం',
+        nav_routine: 'దినచర్య',
+        nav_apothecary: 'మూలికా భాండాగారం',
+        nav_quiz: 'అభ్యాస క్విజ్',
+        nav_bag: 'బ్యాగ్',
+        hero_badge: 'ఆయుర్వేద ప్రేరిత సేంద్రీయ జీవనం',
+        hero_title_1: 'ప్రకృతితో మమేకం.',
+        hero_title_2: 'రోజువారీ ఉత్సాహం కోసం.',
+        hero_desc: 'హితాయు స్వచ్ఛమైన మూలికలు, ఆరోగ్యకరమైన అలవాట్లు మరియు యోగా అభ్యాసాలను కలిపి ఉదయం నుండి రాత్రి వరకు ప్రశాంత శక్తిని అందిస్తుంది.',
+        hero_cta_1: 'మూలికా ఉత్పత్తులు చూడండి',
+        hero_cta_2: 'ప్రాణాయామం ప్రారంభించండి',
+        pillars_eyebrow: 'హితాయు తత్వం',
+        pillars_title: 'సమతుల్య సేంద్రీయ జీవన నాలుగు స్తంభాలు',
+        pillars_desc: 'పురాతన ఆయుర్వేద జ్ఞానాన్ని సులభమైన రోజువారీ అలవాట్లుగా ఎలా మార్చాలో క్రింద చూడండి.',
+        breath_eyebrow: 'ప్రాణాయామం స్టూడియో',
+        breath_title: 'మార్గదర్శక శ్వాస అభ్యాసంతో ప్రశాంతత',
+        breath_desc: 'రెండు నిమిషాల ఏకాగ్ర శ్వాస అభ్యాసం ఒత్తిడిని తగ్గించి మనసును స్పష్టంగా ఉంచుతుంది.',
+        routine_eyebrow: 'దినచర్య ట్రాకర్',
+        routine_title: 'మీ రోజువారీ మూలికా & యోగా దినచర్య',
+        routine_desc: 'మీ రోజువారీ అలవాట్లను పూర్తి చేసినప్పుడు టిక్ చేయండి లేదా కొత్త అలవాటు జోడించండి.',
+        shop_eyebrow: 'హితాయు ఔషధాలయం',
+        shop_title: 'స్వచ్ఛమైన మూలికా ఉత్పత్తులు',
+        shop_desc: 'రోగనిరోధక శక్తి, ప్రశాంత నిద్ర మరియు జీర్ణ ఆరోగ్యం కోసం సహజ మూలికలతో తయారు చేయబడినవి.',
+        quiz_eyebrow: 'వ్యక్తిగత మార్గదర్శనం',
+        quiz_title: 'మీ హితాయు దినచర్యను తెలుసుకోండి',
+        quiz_desc: '3 సులభ ప్రశ్నలకు సమాధానం ఇచ్చి మీకు తగిన మూలికా మిశ్రమం మరియు ప్రాణాయామం పొందండి.',
+        bag_title: 'మీ వెల్నెస్ బ్యాగ్',
+        bag_checkout: 'ఆర్డర్ విచారణ పంపండి',
+        btn_start: 'ప్రారంభించండి',
+        btn_pause: 'ఆపండి',
+        btn_resume: 'కొనసాగించండి',
+        btn_reset: 'రీసెట్',
+        btn_add_bag: 'బ్యాగ్‌లో చేర్చండి',
+        btn_ingredients: 'పదార్థాలు & విధానం',
+        search_placeholder: 'మూలికలు లేదా ప్రయోజనాలు వెతకండి...',
+        habit_placeholder: 'కొత్త అలవాటు జోడించండి...',
+        phases: { Inhale: 'శ్వాస తీసుకోండి', Hold: 'ఆపండి', Exhale: 'శ్వాస వదలండి', Rest: 'విశ్రాంతి', Ready: 'సిద్ధం' },
+        times: { All: 'అన్నీ', Morning: 'ఉదయం', Midday: 'మధ్యాహ్నం', Evening: 'సాయంత్రం' },
+        cats: { All: 'అన్నీ', Immunity: 'రోగనిరోధకత', 'Calm & Sleep': 'శాంతి & నిద్ర', Digestion: 'జీర్ణక్రియ', 'Daily Vitality': 'రోజువారీ శక్తి' }
+      },
+      gu: {
+        langName: 'ગુજરાતી',
+        brand_tag: 'જૈવિક જીવનશૈલી',
+        nav_pillars: 'સ્તંભો',
+        nav_breathwork: 'પ્રાણાયામ',
+        nav_routine: 'દિનચર્યા',
+        nav_apothecary: 'ઔષધાલય',
+        nav_quiz: 'દિનક્રમ ક્વિઝ',
+        nav_bag: 'બેગ',
+        hero_badge: 'આયુર્વેદ-પ્રેરિત જૈવિક જીવનશૈલી',
+        hero_title_1: 'પ્રકૃતિ સાથે જોડાયેલું.',
+        hero_title_2: 'દૈનિક સ્ફૂર્તિ માટે નિર્મિત.',
+        hero_desc: 'હિતાયુ શુદ્ધ ઔષધિઓ, તંદુરસ્ત હર્બલ આદતો અને યોગ અભ્યાસને એકસાથે લાવે છે—જેથી સવારથી રાત સુધી શાંત અને સ્થિર ઊર્જા રહે.',
+        hero_cta_1: 'હર્બલ ઔષધાલય જુઓ',
+        hero_cta_2: 'પ્રાણાયામ શરૂ કરો',
+        pillars_eyebrow: 'હિતાયુ દર્શન',
+        pillars_title: 'સંતુલિત જૈવિક જીવનના ચાર સ્તંભ',
+        pillars_desc: 'પ્રાચીન આયુર્વેદિક જ્ઞાનને સરળ દૈનિક આદતોમાં કેવી રીતે વણી લેવું તે જાણવા નીચે સ્તંભ પસંદ કરો.',
+        breath_eyebrow: 'પ્રાણાયામ સ્ટુડિયો',
+        breath_title: 'માર્ગદર્શિત શ્વાસ અભ્યાસથી મન શાંત કરો',
+        breath_desc: 'માત્ર બે મિનિટનો સચેત પ્રાણાયામ તણાવ ઘટાડે છે અને એકાગ્રતા વધારે છે.',
+        routine_eyebrow: 'દિનચર્યા ટ્રેકર',
+        routine_title: 'તમારી દૈનિક હર્બલ અને યોગ લય બનાવો',
+        routine_desc: 'દૈનિક આદતો પૂર્ણ થાય ત્યારે ટિક કરો અથવા તમારી નવી આદત ઉમેરો.',
+        shop_eyebrow: 'હિતાયુ ઔષધાલય',
+        shop_title: 'શુદ્ધ હર્બલ ઉત્પાદનો',
+        shop_desc: 'રોગપ્રતિકારક શક્તિ, શાંત ઊંઘ અને પાચન માટે શુદ્ધ વનસ્પતિઓમાંથી બનાવેલ.',
+        quiz_eyebrow: 'વ્યક્તિગત માર્ગદર્શન',
+        quiz_title: 'તમારી હિતાયુ દૈનિક રીત જાણો',
+        quiz_desc: '૩ સરળ પ્રશ્નોના જવાબ આપી તમારા માટે યોગ્ય હર્બલ મિશ્રણ અને પ્રાણાયામ મેળવો.',
+        bag_title: 'તમારી વેલનેસ બેગ',
+        bag_checkout: 'ઓર્ડર પૂછપરછ મોકલો',
+        btn_start: 'શરૂ કરો',
+        btn_pause: 'થોભો',
+        btn_resume: 'ચાલુ રાખો',
+        btn_reset: 'રીસેટ',
+        btn_add_bag: 'બેગમાં ઉમેરો',
+        btn_ingredients: 'ઘટકો અને રીત',
+        search_placeholder: 'ઔષધિ અથવા લાભ શોધો...',
+        habit_placeholder: 'તમારી આદત ઉમેરો...',
+        phases: { Inhale: 'શ્વાસ લો', Hold: 'રોકો', Exhale: 'શ્વાસ છોડો', Rest: 'વિશ્રામ', Ready: 'તૈયાર' },
+        times: { All: 'બધા', Morning: 'સવાર', Midday: 'બપોર', Evening: 'સાંજ' },
+        cats: { All: 'બધા', Immunity: 'પ્રતિકારશક્તિ', 'Calm & Sleep': 'શાંતિ અને ઊંઘ', Digestion: 'પાચન', 'Daily Vitality': 'દૈનિક ઊર્જા' }
+      }
+    };
+
+    let currentLang = loadStorage('hitayu_lang', 'en');
+    if (!TRANSLATIONS[currentLang]) currentLang = 'en';
+
+    function t(key) {
+      return (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang][key]) || TRANSLATIONS.en[key] || key;
+    }
+
+    function applyTranslations() {
+      document.documentElement.lang = currentLang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const val = t(key);
+        if (val) el.textContent = val;
+      });
+      const searchEl = document.getElementById('product-search');
+      if (searchEl) searchEl.placeholder = t('search_placeholder');
+      const habitEl = document.getElementById('new-habit-input');
+      if (habitEl) habitEl.placeholder = t('habit_placeholder');
+
+      const resetBtn = document.getElementById('breath-reset-btn');
+      if (resetBtn) resetBtn.textContent = t('btn_reset');
+      const toggleBtn = document.getElementById('breath-toggle-btn');
+      if (toggleBtn) toggleBtn.textContent = breathRunning ? t('btn_pause') : t('btn_start');
+
+      renderRoutine();
+      renderProducts();
+      if (breathRunning) {
+        updateBreathVisuals();
+      } else {
+        document.getElementById('breath-phase-label').textContent = t('phases').Ready;
+      }
+    }
+
+    const langSelectEl = document.getElementById('lang-select');
+    if (langSelectEl) {
+      langSelectEl.value = currentLang;
+      langSelectEl.addEventListener('change', (e) => {
+        currentLang = e.target.value;
+        saveStorage('hitayu_lang', currentLang);
+        applyTranslations();
+        showToast(`Language switched to ${TRANSLATIONS[currentLang].langName}`);
+      });
+    }
+
+    // Initial Render
+    renderPillars();
+    renderBreathModes();
+    renderRoutine();
+    renderProducts();
+    renderBag();
+    renderQuiz();
+    applyTranslations();
+  </script>
+</body>
 </html>
